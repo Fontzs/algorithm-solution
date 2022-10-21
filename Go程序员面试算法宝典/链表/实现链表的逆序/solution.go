@@ -62,6 +62,22 @@ func RecursiveReverse(node *LNode) {
 	node.Next = newHead
 }
 
+func InsertReverse(node *LNode) {
+	if node == nil || node.Next == nil {
+		return
+	}
+	var cur *LNode
+	var next *LNode
+	cur = node.Next.Next
+	node.Next.Next = nil
+	for cur != nil {
+		next = cur.Next
+		cur.Next = node.Next
+		node.Next = cur
+		cur = next
+	}
+}
+
 func main() {
 
 	head := &LNode{}
